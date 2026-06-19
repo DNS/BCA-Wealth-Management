@@ -3,6 +3,8 @@ Start-BitsTransfer $pdf_url -Destination bca-wealth.pdf
 #pdftotext bca-wealth.pdf
 
 $input = gi 'bca-wealth.pdf'
+
+Install-Module ConvertPDFtoTXT
 Convert-PDF2TXT $input | Out-File bca-wealth.txt
 
 ''
