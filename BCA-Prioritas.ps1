@@ -1,6 +1,9 @@
-﻿$pdf_url = 'https://prioritas.bca.co.id/' + (iwr https://prioritas.bca.co.id/en/Wealth-Management/Market-Insight/House-View-Report | % Links | % href | sls 'pdf\Z')[0]
+$pdf_url = 'https://prioritas.bca.co.id/' + (iwr https://prioritas.bca.co.id/en/Wealth-Management/Market-Insight/House-View-Report | % Links | % href | sls 'pdf\Z')[0]
 Start-BitsTransfer $pdf_url -Destination bca-wealth.pdf
-.\pdftotext bca-wealth.pdf
+#pdftotext bca-wealth.pdf
+
+$input = gi 'bca-wealth.pdf'
+Convert-PDF2TXT $input | Out-File bca-wealth.txt
 
 ''
 'Summary: ' + (Get-Date -Format 'yyyy MMMM')
